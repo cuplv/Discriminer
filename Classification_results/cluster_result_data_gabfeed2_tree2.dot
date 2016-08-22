@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="OptimizedMultiplierHelper0.getValue() <= 1134.5\ngini = 0.831\nsamples = 446\nvalue = [6544, 6436, 5681, 6357, 5455, 4593]"] ;
+1 [label="BigInteger.add(a,b) <= 1780184.0\ngini = 0.5047\nsamples = 154\nvalue = [6544, 6366, 63, 0, 0, 0]"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="BigInteger.add(a,b) <= 1516680.0\ngini = 0.0652\nsamples = 80\nvalue = [6471, 226, 0, 0, 0, 0]"] ;
+1 -> 2 ;
+3 [label="gini = 0.0057\nsamples = 61\nvalue = [5581, 16, 0, 0, 0, 0]"] ;
+2 -> 3 ;
+4 [label="gini = 0.3089\nsamples = 19\nvalue = [890, 210, 0, 0, 0, 0]"] ;
+2 -> 4 ;
+5 [label="OptimizedMultiplierHelper1.OptimizedMultiplierHelper1(a) <= 593.0\ngini = 0.0426\nsamples = 74\nvalue = [73, 6140, 63, 0, 0, 0]"] ;
+1 -> 5 ;
+6 [label="gini = 0.4872\nsamples = 2\nvalue = [42, 58, 0, 0, 0, 0]"] ;
+5 -> 6 ;
+7 [label="gini = 0.0301\nsamples = 72\nvalue = [31, 6082, 63, 0, 0, 0]"] ;
+5 -> 7 ;
+8 [label="OptimizedMultiplier.standardMultiply(a,b) <= 2147.5\ngini = 0.7483\nsamples = 292\nvalue = [0, 70, 5618, 6357, 5455, 4593]"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="BigInteger.shiftLeft(a) <= 5003512.0\ngini = 0.5129\nsamples = 158\nvalue = [0, 70, 5618, 6200, 101, 0]"] ;
+8 -> 9 ;
+10 [label="gini = 0.094\nsamples = 75\nvalue = [0, 70, 5516, 214, 0, 0]"] ;
+9 -> 10 ;
+11 [label="gini = 0.064\nsamples = 83\nvalue = [0, 0, 102, 5986, 101, 0]"] ;
+9 -> 11 ;
+12 [label="BigInteger.add(a,b) <= 8053724.0\ngini = 0.5123\nsamples = 134\nvalue = [0, 0, 0, 157, 5354, 4593]"] ;
+8 -> 12 ;
+13 [label="gini = 0.0973\nsamples = 77\nvalue = [0, 0, 0, 157, 5216, 121]"] ;
+12 -> 13 ;
+14 [label="gini = 0.0581\nsamples = 57\nvalue = [0, 0, 0, 0, 138, 4472]"] ;
+12 -> 14 ;
+}

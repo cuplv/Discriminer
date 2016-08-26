@@ -1,15 +1,17 @@
-# Discriminer: A tool of discriminating program traces (runs) based on observations
-### Goal: Program Confidentiality Analysis in presence of Side-Channel
+# Discriminer: Discriminating program traces based on observations
 
-#### Requirement:
-Python 2.7 or more </br>
-Libraries: Numpy, Pandas, matplotlib, sklearn, and scipy </br>
-
-## Overall Description
+## Description
 Dicriminer is a combination of program analysis and machine learning tool which helps users to learn a classification model about program traces. First, a program is analyzed and input data is obtained using dynamic analysis. The data features can be function calls, basic block, branches and so on. In addition, the data should include an observable feature like time of execution or memory consumption for each record (each record of data is equal to some features of a program trace). Note that due to probabilistic modeling, the data should include 10 times of observations for the same record, or it may include mean and standard deviation for each record. Given this data as input, the clustering part will divide the data into numbers of clusters (specified by the user) based on distance measures like euclidean distance using the mean of each record. As a result, each record is assigned to a cluster based on its mean. In the next step, the clustering procedure considers a stochastic distribution for each observation, and it calculates a probability (weight) to be assigned to different clusters for all records. For example, suppose t1 is a trace which has time observation such that the mean of execution time is 3.6 seconds and standard deviation is 161 as follow:
 ![Alt](weight_definition.jpg)
 The clustering based on mean will assign it to Cluster_1, but due to probabilistic behaviors of time (assume that time is normal random variable), we also consider the probability to be assigned to other clusters like Cluster_0 and add weight feature to each record to show the probability. The output data of clustering step will include inside features of the program like function calls, label, and weight for each record. This data will be input for classification step in which a classifier model like decision tree will learn a model which classifies (discriminates) traces. As each label is equal to a cluster (for example a time range of execution), the classifier distinguishes traces based on the observations. If the inside features are function calls, for instance, the classifier will learn models like if function f1() is called, then the trace should be assigned to label 1. As label 1 shows a range of time like [t1,t2], the model predicts that calling function f1 in a trace will determine the execution of program trace between [t1,t2]. This observation can lead to confidentiality violation as described in the following: 
 [Discriminating trace using Time!](https://docs.google.com/a/colorado.edu/viewer?a=v&pid=sites&srcid=Y29sb3JhZG8uZWR1fHNhZWlkLXRpenBhei1uaWFyaXxneDpjODY1NzIyZmMxNGYxMGU) </br>
+### Steps: [Data Extraction](## Data Extraction) -> [Data Clustering](## Data Clustering) -> [Learning Classifier](## Learning Classifier)
+
+### Goal: Program Confidentiality Analysis in presence of Side-Channel
+#### Requirement:
+Python 2.7 or more </br>
+Libraries: Numpy, Pandas, matplotlib, sklearn, and scipy </br>
+
 ## Data Extraction
 The input data for Discriminer should put inside **Clustering_input**. The format of the file should be **.csv**. In order to extract data from a target program, you can use standard dynamic tools like **Soot**. However, these tools are very broad and support many functions. We will provide you a compact tool which collects necessary data from a target program (coming soon). 
 The input data in **.csv** format should have three main parts: 1- ID for each record (unique number) 2- 10 features named **"T1"**...**"T10"** which set to values of 10 measurements of the same record. For example, you may execute a program with the same input 10 times, and **T1**...**T10** are time recorded in each execution. This is one way to introduce observations like time to the input data set. As another way, you can include two features named **"mean"** and **"std"** which are the mean and standard deviation for each record. If your records are constant, you can set all **"T1"**...**"T10"** to constant value, or if you use **"mean"** and **"std"** features, the mean feature should set to the constant value and standard deviation should set to  0. 3- Features about program inside behaviors. For example, these features can be function names, and their values can be the number of times the functions are called. 

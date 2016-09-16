@@ -31,7 +31,7 @@ The decision tree can be seen as a set of discrimination formulae. For example, 
 ## Run Discriminer
 In this part, we show the steps to run Discriminer for provided inputs:
 ### Clustering Phase
-Please make sure that the input data is inside **Clustering_input** and it has id, T1,..,T10, function features. Note that instead of T1, ...,T10, you can provide mean and std features.  </br> 
+Please make sure that the input data is inside **Clustering_input** and it has id, T1,..,T10, function features. Note that instead of T1, ...,T10, you can provide mean and std features. Here, we show the process for SnapBuddy data set: </br> 
 1. python Cluster.py  </br>
 2. (Enter the name of your input data set (.csv) without file type): data_snapBuddy1  </br>
 3. (Are 10-measurements included in file as features T1 ... T10 (yes(y)/no(n))?) yes  </br>

@@ -40,7 +40,7 @@ Please make sure that the input data is inside **Clustering_input** and it has i
 6. (Enter the name of output data set (.csv) file without file type:) csv_data_snapBuddy1   </br>
 The result of clustering process will be available inside **Clustering_results** with the specified name of **output** and **.csv** files.  </br> 
 ### Classification Phase
-The input file for classification should include id, function features, wegith, and lablel. Please make sure that your input data for classification is inside **Classification_input**. For this reason, we first copy the result of clustering process which is **.csv** file from **Clustering_results** to **Classification_input**.  </br> 
+The input file for classification should include id, function features, wegith, and lablel. Please make sure that your input data for classification is inside **Classification_input**. For this reason, we first copy the result of clustering process from **Clustering_results** to **Classification_input**.  </br> 
 1. cp Clustering_results/csv_data_snapBuddy1.csv Classification_input  </br>
 2. python Classify.py   </br>
 3. (Enter the name of your input data set (.csv) without file type:) csv_data_snapBuddy1   </br>

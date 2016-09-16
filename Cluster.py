@@ -7,11 +7,11 @@ style.use("ggplot")
 from sklearn.cluster import KMeans
 from scipy.stats import norm
 
-filename = input("Enter the name of your input data set (.csv) without file type: ")
+filename = raw_input("Enter the name of your input data set (.csv) without file type: ")
 print("\n **Please make sure your data set include id feature** \n")
-measurements = input("Are 10-measurements included in file as features T1 ... T10 (yes(y)/no(n))? ")
+measurements = raw_input("Are 10-measurements included in file as features T1 ... T10 (yes(y)/no(n))? ")
 print("\n **In case of \'No\', you should put *mean* and *std* (standard deviation) for each record. Header of features should be mean and std respectfully** \n")
-cluster_num= input("Enter number of clusters to divide data set (default is 2): ")
+cluster_num= raw_input("Enter number of clusters to divide data set (default is 2): ")
 if(cluster_num == ""):
     cluster_numbers = 2
 else:
@@ -20,8 +20,8 @@ else:
     except ValueError:
         print("That's not an int!")
 
-cluster_image = input("Enter the name of plot file for clustering: ")
-cluster_output = input("Enter the name of output data set (.csv) file without file type: ")
+cluster_image = raw_input("Enter the name of plot file for clustering: ")
+cluster_output = raw_input("Enter the name of output data set (.csv) file without file type: ")
 
 df = pd.read_csv("Clustering_input/" + filename+".csv")
 

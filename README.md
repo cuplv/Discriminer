@@ -51,3 +51,4 @@ Enter the following commands to convert them to .png file:  </br>
 6. dot -Tpng Classification_results/csv_data_snapBuddy1_tree0.dot -o tree0.png  </br>
 7. dot -Tpng Classification_results/csv_data_snapBuddy1_tree1.dot -o tree1.png  </br>
 8. dot -Tpng Classification_results/csv_data_snapBuddy1_tree2.dot -o tree2.png  </br>
+For the GabFeed, the process of clustering and classifying will be the same (using data_gabfeed2 as input for clusrering), except that you should specify the maximum depth of tree in step 5 of classifying equal to 3 to get the highest accuracy. 

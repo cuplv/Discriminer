@@ -31,22 +31,23 @@ The decision tree can be seen as a set of discrimination formulae. For example, 
 ## Run Discriminer
 In this part, we show the steps to run Discriminer for provided inputs:
 ### Clustering Phase
-Please make sure that the input data is inside **Clustering_input** and it has id, T1,..,T10, function features. Note that instead of T1, ...,T10, you can provide mean and std features.  
-1. python Cluster.py 
-2. (Enter the name of your input data set (.csv) without file type): data_snapBuddy1
-3. (Are 10-measurements included in file as features T1 ... T10 (yes(y)/no(n))?) yes
-4. (Enter number of clusters to divide data set (default is 2):) 6
-5. (Enter the name of plot file for clustering:) plot_data_snapBuddy1
-6. (Enter the name of output data set (.csv) file without file type:) csv_data_snapBuddy1
-The result of clustering process will be available inside **Clustering_results** with the specified name of plot and **.csv** file. 
+Please make sure that the input data is inside **Clustering_input** and it has id, T1,..,T10, function features. Note that instead of T1, ...,T10, you can provide mean and std features.  </br> 
+1. python Cluster.py  </br>
+2. (Enter the name of your input data set (.csv) without file type): data_snapBuddy1  </br>
+3. (Are 10-measurements included in file as features T1 ... T10 (yes(y)/no(n))?) yes  </br>
+4. (Enter number of clusters to divide data set (default is 2):) 6   </br>
+5. (Enter the name of plot file for clustering:) plot_data_snapBuddy1   </br>
+6. (Enter the name of output data set (.csv) file without file type:) csv_data_snapBuddy1   </br>
+The result of clustering process will be available inside **Clustering_results** with the specified name of plot and **.csv** file.  </br> 
 ### Classification Phase
-The input file for classification should include id, function features, wegith, and lablel. Please make sure that your input data for classification is inside **Classification_input**. For this reason, we first copy the result of clustering process which is **.csv** file from **Clustering_results** to **Classification_input**. 
-1. cp Clustering_results/csv_data_snapBuddy1.csv Classification_input
-2. python Classify.py
-3. (Enter the name of your input data set (.csv) without file type:) csv_data_snapBuddy1
-4. (Please enter the number of random folds for cross-validation step (default is 20):) (press enter)
-5. (Please enter the maximum depth of tree (do not specify any number if default value of algorithm is the best)?) (press enter)
-The result of classification process will be available inside **Classification_results** in the format of .dot file for three most accurate decision trres (the accuracy for each of them will be shown in the output of classify.py execution). Enter the following commands to convert them to .png file:
-6. dot -Tpng Classification_results/csv_data_snapBuddy1_tree0.dot -o tree0.png
-7. dot -Tpng Classification_results/csv_data_snapBuddy1_tree1.dot -o tree1.png
-8. dot -Tpng Classification_results/csv_data_snapBuddy1_tree2.dot -o tree2.png
+The input file for classification should include id, function features, wegith, and lablel. Please make sure that your input data for classification is inside **Classification_input**. For this reason, we first copy the result of clustering process which is **.csv** file from **Clustering_results** to **Classification_input**.  </br> 
+1. cp Clustering_results/csv_data_snapBuddy1.csv Classification_input  </br>
+2. python Classify.py   </br>
+3. (Enter the name of your input data set (.csv) without file type:) csv_data_snapBuddy1   </br>
+4. (Please enter the number of random folds for cross-validation step (default is 20):) (press enter)  </br>
+5. (Please enter the maximum depth of tree (do not specify any number if default value of algorithm is the best)?) (press enter)   </br>
+The result of classification process will be available inside **Classification_results** in the format of .dot file for three most accurate decision trres (the accuracy for each of them will be shown in the output of classify.py execution).  </br>
+Enter the following commands to convert them to .png file:  </br>
+6. dot -Tpng Classification_results/csv_data_snapBuddy1_tree0.dot -o tree0.png  </br>
+7. dot -Tpng Classification_results/csv_data_snapBuddy1_tree1.dot -o tree1.png  </br>
+8. dot -Tpng Classification_results/csv_data_snapBuddy1_tree2.dot -o tree2.png  </br>

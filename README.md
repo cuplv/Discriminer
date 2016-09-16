@@ -38,7 +38,7 @@ Please make sure that the input data is inside **Clustering_input** and it has i
 4. (Enter number of clusters to divide data set (default is 2):) 6   </br>
 5. (Enter the name of plot file for clustering:) plot_data_snapBuddy1   </br>
 6. (Enter the name of output data set (.csv) file without file type:) csv_data_snapBuddy1   </br>
-The result of clustering process will be available inside **Clustering_results** with the specified name of plot and **.csv** file.  </br> 
+The result of clustering process will be available inside **Clustering_results** with the specified name of **plot** and **.csv** files.  </br> 
 ### Classification Phase
 The input file for classification should include id, function features, wegith, and lablel. Please make sure that your input data for classification is inside **Classification_input**. For this reason, we first copy the result of clustering process which is **.csv** file from **Clustering_results** to **Classification_input**.  </br> 
 1. cp Clustering_results/csv_data_snapBuddy1.csv Classification_input  </br>

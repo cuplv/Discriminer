@@ -46,7 +46,7 @@ The input file for classification should include id, function features, wegith, 
 3. (Enter the name of your input data set (.csv) without file type:) csv_data_snapBuddy1   </br>
 4. (Please enter the number of random folds for cross-validation step (default is 20):) (press enter)  </br>
 5. (Please enter the maximum depth of tree (do not specify any number if default value of algorithm is the best)?) (press enter)   </br>
-The result of classification process will be available inside **Classification_results** in the format of .dot file for three most accurate decision trres (the accuracy for each of them will be shown in the output of classify.py execution).  </br>
+The result of classification process will be available inside **Classification_results** in the format of .dot file for three most accurate decision trres (the accuracy for each of them will be shown in the output of classify.py).  </br>
 Enter the following commands to convert them to .png file:  </br>
 6. dot -Tpng Classification_results/csv_data_snapBuddy1_tree0.dot -o tree0.png  </br>
 7. dot -Tpng Classification_results/csv_data_snapBuddy1_tree1.dot -o tree1.png  </br>

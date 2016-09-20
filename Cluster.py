@@ -6,24 +6,51 @@ from matplotlib import style
 style.use("ggplot")
 from sklearn.cluster import KMeans
 from scipy.stats import norm
+import argparse
 
-filename = raw_input("Enter the name of your input data set (.csv) without file type: ")
-print("\n **Please make sure your data set include id feature** \n")
-measurements = raw_input("Are 10-measurements included in file as features T1 ... T10 (yes(y)/no(n))? ")
-print("\n **In case of \'No\', you should put *mean* and *std* (standard deviation) for each record. Header of features should be mean and std respectfully** \n")
-cluster_num= raw_input("Enter number of clusters to divide data set (default is 2): ")
-if(cluster_num == ""):
-    cluster_numbers = 2
+argparser = argparse.ArgumentParser()
+
+argparser.add_argument("--filename", help="input_file", required=False)
+
+argparser.add_argument("--measurements", help="is 10-measurements provided", default = "yes", required=False)
+
+argparser.add_argument("--clusters", help="number of clusters", default = 2, required=False)
+
+argparser.add_argument("--output", help="number of clusters", required=False)
+
+args = argparser.parse_args()
+if(args.filename == None):
+    filename = raw_input("Enter the name of your input data set (.csv) without file type: ")
+    print("\n **Please make sure your data set include id feature** \n")
+    measurements = raw_input("Are 10-measurements included in file as features T1 ... T10 (yes(y)/no(n))? ")
+    print("\n **In case of \'No\', you should put *mean* and *std* (standard deviation) for each record. Header of features should be mean and std respectfully** \n")
+    cluster_num= raw_input("Enter number of clusters to divide data set (default is 2): ")
+    if(cluster_num == ""):
+        cluster_numbers = 2
+    else:
+        try:
+            cluster_numbers = int(cluster_num)
+        except ValueError:
+            print("That's not an int!")
+    cluster_image = raw_input("Enter the name of plot file for clustering: ")
+    cluster_output = raw_input("Enter the name of output data set (.csv) file without file type: ")
+
+    df = pd.read_csv("Clustering_input/" + filename+".csv")
 else:
-    try:
-        cluster_numbers = int(cluster_num)
-    except ValueError:
-        print("That's not an int!")
+    filename = args.filename
+    df = pd.read_csv(filename)
+    measurements = args.measurements
+    cluster_num = args.clusters
+    cluster_image = args.output
+    cluster_output = args.output
+    if(cluster_num == ""):
+        cluster_numbers = 2
+    else:
+        try:
+            cluster_numbers = int(cluster_num)
+        except ValueError:
+            print("Clusrer_number should be integer")
 
-cluster_image = raw_input("Enter the name of plot file for clustering: ")
-cluster_output = raw_input("Enter the name of output data set (.csv) file without file type: ")
-
-df = pd.read_csv("Clustering_input/" + filename+".csv")
 
 if(measurements == "yes" or measurements == "y" or measurements == ""):
     df_T = df[['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10']]
@@ -50,8 +77,11 @@ else:
 for i in range(len(Mean)):
     plt.plot(i, Mean[i][0], colors[labels[i]], markersize = 10)
 
-plt.savefig("Clustering_results/" + cluster_image+".png")
-print("Cluster plot has generated. Please wait to generate final data set for Classification step. We are going to calculate weight and label for each record!")
+if(args.filename == None):
+    plt.savefig("Clustering_results/" + cluster_image+".png")
+    print("Cluster plot has generated. Please wait to generate final data set for Classification step. We are going to calculate weight and label for each record!")
+else:
+    plt.savefig(cluster_image+".png")
 
 label_set = set(labels)
 
@@ -130,4 +160,7 @@ while i < len(X1):
 df2 = pd.DataFrame(X1, columns=header)
 df2.set_index('id', inplace=True)
 
-df2.to_csv("Clustering_results/" + cluster_output+".csv")
+if(args.filename == None):
+    df2.to_csv("Clustering_results/" + cluster_output+".csv")
+else:
+    df2.to_csv(cluster_output+".csv")

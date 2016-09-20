@@ -5,26 +5,60 @@ import random
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.utils import shuffle
 from sklearn import decomposition
+import argparse
 
-filename = raw_input("Enter the name of your input data set (.csv) without file type: ")
-kfolds = raw_input("Please enter the number of random folds for cross-validation step (default is 20)? ")
-if(kfolds == ""):
-    kfolds_numbers = 20
-else:
-    try:
-        kfolds_numbers = int(kfolds)
-    except ValueError:
-        print("That's not an int!")
-max_depth_tree = raw_input("Please enter the maximum depth of tree (do not specify any number if default value of algorithm is the best)? ")
-if(max_depth_tree == ""):
-    max_depth_tree_num = None
-else:
-    try:
-        max_depth_tree_num = int(max_depth_tree)
-    except ValueError:
-        print("That's not an int!")
+argparser = argparse.ArgumentParser()
 
-df = pd.read_csv("Classification_input/" + filename + ".csv",index_col = 'id')
+argparser.add_argument("--filename", help="input_file", required=False)
+
+argparser.add_argument("--kfolds", help="number of k", default = "20", required=False)
+
+argparser.add_argument("--depth", help="depth of tree", default = "", required=False)
+
+argparser.add_argument("--output", help="name of output", default = "tmp", required=False)
+
+args = argparser.parse_args()
+
+if(args.filename == None):
+    filename = raw_input("Enter the name of your input data set (.csv) without file type: ")
+    kfolds = raw_input("Please enter the number of random folds for cross-validation step (default is 20)? ")
+    if(kfolds == ""):
+        kfolds_numbers = 20
+    else:
+        try:
+            kfolds_numbers = int(kfolds)
+        except ValueError:
+            print("K-fold should be an integer!")
+    max_depth_tree = raw_input("Please enter the maximum depth of tree (do not specify any number if default value of algorithm is the best)? ")
+    if(max_depth_tree == ""):
+        max_depth_tree_num = None
+    else:
+        try:
+            max_depth_tree_num = int(max_depth_tree)
+        except ValueError:
+            print("Max depth should be integer!")
+
+    df = pd.read_csv("Classification_input/" + filename + ".csv",index_col = 'id')
+else:
+    filename = args.filename
+    kfolds = args.kfolds
+    if(kfolds == ""):
+        kfolds_numbers = 20
+    else:
+        try:
+            kfolds_numbers = int(kfolds)
+        except ValueError:
+            print("K-fold should be an integer!")
+    max_depth_tree = args.depth
+    if(max_depth_tree == ""):
+        max_depth_tree_num = None
+    else:
+        try:
+            max_depth_tree_num = int(max_depth_tree)
+        except ValueError:
+            print("Max depth should be integer!")
+    df = pd.read_csv(filename,index_col = 'id')
+
 header = list(df.columns.values)
 header.remove('label')
 header.remove('weight')
@@ -55,12 +89,17 @@ for i in range(3):
         if(accuracy > accuracy_max):
             accuracy_max = accuracy
             clf = clf_temp
-
-    out = "Classification_results/" + filename +'_tree'+str(i)+'.dot'
+    if(args.filename==None):
+        out = "Classification_results/" + filename +'_tree'+str(i)+'.dot'
+    else:
+        out = args.output +'_tree'+str(i)+'.dot'
     tree.export_graphviz(clf,out_file=out,feature_names=header)
     print_out ='accuracy ' + filename +'_tree'+str(i) + ': '
     print_out = print_out + str(accuracy_max)
     print(print_out)
     accuracy_max = 0
 
-print("\n The program generates three trees with highest accuracy. Please run: dot -Tpng Classification_results/" + filename +"_treen.dot" + " -o tree.png to see the final decision tree. Please note that treen is tree0, tree1, or tree2. \n")
+if(args.filename==None):
+    print("\n The program generates three trees with highest accuracy. Please run: dot -Tpng Classification_results/" + filename +"_treen.dot" + " -o tree.png to see the final decision tree. Please note that treen is tree0, tree1, or tree2. \n")
+else:
+    print("\n The program generates three trees with highest accuracy. Please run: dot -Tpng " + args.output +"_treen.dot" + " -o tree.png to see the final decision tree. Please note that treen is tree0, tree1, or tree2. \n")

@@ -27,8 +27,17 @@ dot -Tpng Classification_results/cluster_result_data_gabfeed2_tree0.dot -o Class
 And the result decision tree will look like the following (partial decision tree, see the full one inside **Classification_results**): 
 ![Alt](sample_decision_tree_1.png) </br>
 The decision tree can be seen as a set of discrimination formulae. For example, it says that if **"image.BufferedImageOp.filter"** is not called, then the record belongs to Cluster_0 (As it has much more samples in comparison to other clusters). The another example is the one which assigns records to last cluster namely Cluster_5. If **"image.BufferedImageOp.filter"** and **"image.OilFilterPixel"** are called, while **"lang.Math.sqrt"** is not called, then the data record should be assigned to Cluster_5. 
-
-## Run Discriminer
+## Run Discriminer (Non-Interactive)
+### Clustering Phase
+python Cluster.py --filename Clustering_input/data_snapBuddy1.csv --measurements yes --clusters 6 --output cluster_result_snapBuddy1 
+### Classification Phase
+python Classify.py --filename cluster_result_snapBuddy1.csv --kfolds 20 --output snapBuddy1_decisionTree
+### View Clustering Results
+open cluster_result_snapBuddy1.png
+### View Decision Trees
+dot -Tpng snapBuddy1_decisionTree_tree0.dot -o tree.png     (instead of tree0, you can have tree1 or tree2)  </br>
+open tree.png  
+## Run Discriminer (Interactive)
 In this part, we show the steps to run Discriminer for provided inputs:
 ### Clustering Phase
 Please make sure that the input data is inside **Clustering_input** and it has id, T1,..,T10, function features. Note that instead of T1, ...,T10, you can provide mean and std features. Here, we show the process for SnapBuddy data set: </br> 

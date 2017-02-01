@@ -1,0 +1,4 @@
+1- To add data structure which preserves the order of function calls
+2- To add capability to add interesting and non-interesting functions from outside
+3- To distinguish between two method names of the same class with number of arguments 
+4- Instrumentation at branch level should be done!

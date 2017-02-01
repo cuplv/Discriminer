@@ -1,0 +1,9 @@
+LSB0_10_100_10		# LSB0 with 10 functions
+MSB0_10_100_10 		# MSB0 with 10 functions
+RegEx_20_10_1_101	# Reg with 20 functions and pattern 101
+RegEx_50_10_1_1010	# Reg with 50 functions and pattern 1010
+RegEx_80_10_2_10111 	# Reg with 80 functions and pattern 10111
+RegEx_100_10_2_10101	# Reg with 100 functions and pattern 10101
+RegEx_150_10_2_10011	# Reg with 150 functions and pattern 10011
+RegEx_200_10_2_101011	# Reg with 200 functions and pattern 101011
+RegEx_400_10_3_1010101	# Reg with 400 functions and pattern 1010101

@@ -1,0 +1,12 @@
+stac/discriminer/callRecord/textCrunchrTransformer.class
+stac/discriminer/callRecord/snapBuddyTransformer.class
+stac/discriminer/test/test1.class
+stac/discriminer/callRecord/SimpleAgent.class
+stac/discriminer/callRecord/gabFeedTransformer.class
+stac/discriminer/callRecord/benchmarkTransformer.class
+stac/discriminer/test/test2.class
+stac/discriminer/callRecord/malwareAnalysis.class
+stac/discriminer/parser/parserInteger.class
+stac/discriminer/callRecord/Stack.class
+stac/discriminer/parser/parserBoolean.class
+stac/discriminer/callRecord/App.class

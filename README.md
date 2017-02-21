@@ -49,7 +49,7 @@ Then, we can run classification program as following: </br>
 --depth (the maximum depth of tree, it is optional) 
 --output (specifies the name and location of output file) </br>
 The output file will produce three top accurate decision trees in **.dot** format inside **Classification_results** and print out the accuracy of each tree at the end of program execution. Users can enter the following command in terminal to produce final trees: </br>
-dot -Tpng Classification_results/snapBuddy1_decisionTree_tree0.dot -o Classification_results/snapBuddy1_decisionTree_tree0.png </br>
+\# dot -Tpng Classification_results/snapBuddy1_decisionTree_tree0.dot -o Classification_results/snapBuddy1_decisionTree_tree0.png </br>
 And the result decision tree will look like the following (partial decision tree, see the full one inside **Classification_results**): 
 ![Alt](sample_decision_tree_1.png) </br>
 Please note that we also use [RapidMiner[(https://rapidminer.com/) to produce the output decision tree in high quality. 

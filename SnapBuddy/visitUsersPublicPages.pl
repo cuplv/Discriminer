@@ -20,7 +20,7 @@ while (<$input>)
     chomp $line;
     if($i % 2 eq 1)
     {
-        print "Downloading public profile of $line";
+        print "Downloading public profile of $line \n";
     }
     if($i % 2 eq 0)
     {

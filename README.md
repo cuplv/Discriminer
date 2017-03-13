@@ -6,10 +6,10 @@ Dicriminer is a combination of dynamic analysis and machine learning techniques 
 The clustering based on mean will assign it to both Cluster_1 and Cluster_0 with different weights 78 and 22, respectively. This is due to probabilistic behaviors of time (we consider time as a Gaussian Distribution). The output data of clustering step will include the internal features of the program, class label (assigned cluster), and weight for each record. This data will be input for classification step ([final step](https://github.com/cuplv/Discriminer/blob/master/README.md#learning-classifier)). A classifier model like decision tree will learn a model which discriminates traces. As each label is equal to a cluster (for example a time range of execution), the classifier distinguishes traces based on the observations. If the inside features are function calls, for instance, the classifier will learn a model which explains timing differences based on function calls. The discriminant model can be useful to debug security issues related to timing side channel and availability as shown in [Discriminating Traces with Time](https://arxiv.org/pdf/1702.07103.pdf) published in TACAS'17. We consider an example of SnapBuddy in the paper to show different steps of Discriminer. 
 ### Steps: [1. Data Extraction](https://github.com/cuplv/Discriminer/blob/master/README.md#data-extraction) -> [2. Data Clustering](https://github.com/cuplv/Discriminer/blob/master/README.md#data-clustering-label-and-weight-calculations) -> [3. Learning Classifier](https://github.com/cuplv/Discriminer/blob/master/README.md#learning-classifier)
 
-#### Requirement:
-Curl (https://curl.haxx.se), pkg-config, libfreetype6-dev, python-imaging-tk </br>
+#### Requirement (MAC and Ubuntu):
+Curl (https://curl.haxx.se), graphviz, pkg-config, libfreetype6-dev, python-imaging-tk </br>
 Python 2.7 or more </br>
-Python Libraries: Numpy, Pandas, matplotlib, sklearn, and scipy </br>
+Python Libraries (In order): Pandas, Numpy, matplotlib, scipy, and sklearn </br>
 
 ## SnapBuddy-Social Network Web Server
 SnapBuddy is a java web application with 3,071 methods. It is implementing a mock social network in which each user has their own page with a photograph. Users can login to SnapBuddy to upload photos to share 

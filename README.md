@@ -7,9 +7,9 @@ The clustering based on mean will assign it to both Cluster_1 and Cluster_0 with
 ### Steps: [1. Data Extraction](https://github.com/cuplv/Discriminer/blob/master/README.md#data-extraction) -> [2. Data Clustering](https://github.com/cuplv/Discriminer/blob/master/README.md#data-clustering-label-and-weight-calculations) -> [3. Learning Classifier](https://github.com/cuplv/Discriminer/blob/master/README.md#learning-classifier)
 
 #### Requirement:
-Curl (https://curl.haxx.se) </br>
+Curl (https://curl.haxx.se), pkg-config, libfreetype6-dev, python-imaging-tk </br>
 Python 2.7 or more </br>
-Libraries: Numpy, Pandas, matplotlib, sklearn, and scipy </br>
+Python Libraries: Numpy, Pandas, matplotlib, sklearn, and scipy </br>
 
 ## SnapBuddy-Social Network Web Server
 SnapBuddy is a java web application with 3,071 methods. It is implementing a mock social network in which each user has their own page with a photograph. Users can login to SnapBuddy to upload photos to share 

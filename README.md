@@ -30,7 +30,7 @@ Let's come back to SnapBuddy application. The sample of the output file is avail
 
 ## Data Clustering (label and weight calculations)
 After putting data inside **Clustering_input**, you can run **Cluster.py** to cluster data and calculate required features for classification step. The program asks users about the name of the input file, whether the data set included 10-times measurements **"T1"**...**"T10"** or it contains **"mean"** and **"std"**, number of clusters, and the output of clustering step. Considering the example of SnapBuddy, you need to issue following commands to cluster the data set while you are at the root of Gut repository (Let's suppose we change the name of **final_result.csv** to **data_snapBuddy1.csv**): </br>
-\# python Cluster.py --filename Clustering_input/data_snapBuddy1.csv --measurements yes --clusters 6 --output \\
+\# python Cluster.py --filename Clustering_input/data_snapBuddy1.csv --measurements yes --clusters 6 --output \\</br> 
 ./Clustering_results/cluster_result_snapBuddy1  </br>
 --filename (specifies the input data set for clustering) </br>
 --measurements  ('yes' if the data set include 10-times of measurements; 'no' if the data set has mean and standard deviation) </br> 
@@ -45,7 +45,7 @@ The plot shows data clustering based on the mean measurement of each record. Aft
 The classification procedure considers input file to be inside **Classification_input**. For snapBuddy example, you can issue the following command to copy the result of clustering step inside the foloder as follow: </br>
 \# cp ./Clustering_results/cluster_result_snapBuddy1.csv ./Classification_input/ </br>
 Then, we can run classification program as following: </br>
-\# python Classify.py --filename ./Classification_input/cluster_result_snapBuddy1.csv --kfolds 20 --output \\
+\# python Classify.py --filename ./Classification_input/cluster_result_snapBuddy1.csv --kfolds 20 --output \\</br> 
 ./Classification_results/snapBuddy1_decisionTree </br>
 --filename (specifies the input data set for classification) </br>
 --kfold (specifies K in K-fold cross_validation, it is optional) </br> 

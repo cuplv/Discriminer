@@ -28,8 +28,8 @@ This script will execute both instrumented (to record method calls) and un-instr
 The data set named final_result.csv will be used for the clustering and classification steps. In general, clustering and classification steps require a set of internal features (like method calls or predicate conditions) as variable and either 10-times of observations (explicitly named T1 to T10 in .csv file) or mean and standard deviation of each observation (explicitly named mean and std in .csv file) to find similarity between the records and builds discriminant model. 
 You can use the same script for all other applications and micro-benchmark to produce the data set. For micro-benchmark, you need to specify the name of the application available at ./MicroBenchmark/Available_Benchmarks.txt. Let's suppose you choose LSB0_10_100_10, you need to issue following commands:
 ```
-cd MicroBenchmark   </br>
-./start.sh LSB0_10_100_10  </br>
+cd MicroBenchmark
+./start.sh LSB0_10_100_10 
 ```
 Let's come back to SnapBuddy application. The sample of the output file is available inside **Output_Sample**. Once you obtain the data set (or use the provided one inside **Output_Sample**), you need to move it to inside of **Clustering_input** to organize the data set in different steps. 
 
@@ -56,7 +56,7 @@ cp ./Clustering_results/cluster_result_snapBuddy1.csv ./Classification_input/
 Then, we can run classification program as following:
 ```
 python Classify.py --filename ./Classification_input/cluster_result_snapBuddy1.csv --kfolds 20 --output
-./Classification_results/snapBuddy1_decisionTree </br>
+./Classification_results/snapBuddy1_decisionTree
 ```
 --filename (specifies the input data set for classification) </br>
 --kfold (specifies K in K-fold cross_validation, it is optional) </br> 
